@@ -4,20 +4,41 @@
 
 **Live demo:** https://snack-moments.vercel.app (start at [/play](https://snack-moments.vercel.app/play), then [/admin/protein](https://snack-moments.vercel.app/admin/protein))
 
-This is a prototype for the Hot Takes *Product & AI Engineering* assignment (Challenge 1, Parts A and B). It uses protein snacks as the example category.
+## The problem
 
-The conventional question:
+Brands ask research questions like this one:
 
 > *"When choosing a snack, how important is protein content to you?" (1–5)*
 
-Almost everyone answers it with a 4 or 5, because protein sounds healthy. Snack Moments measures what people actually **trade** for protein instead: at which moments, at what price, and against which tastes. It then separates *careless answers* from *honest contradictions*, and turns the contradictions into findings.
+Almost everyone answers 4 or 5, because protein sounds healthy. The answer tells a brand very little: it doesn't say whether people will **pay** for protein, **when** it matters, or what they'd give up for it. On top of that, some players rush or tap randomly to finish a survey, and a normal survey can't tell those answers apart from real ones.
 
-| Surface | What it is |
+So the problem has two parts:
+1. **Ask better questions:** measure what people actually do, not what sounds good to say.
+2. **Trust the answers:** spot careless or suspicious responses, without throwing away honest people whose answers simply contradict each other.
+
+Snack Moments solves both, using protein snacks as the example category. It measures what people **trade** for protein (at which moments, at what price, against which tastes), separates *careless answers* from *honest contradictions*, and turns the contradictions into findings for the brand.
+
+## How it works
+
+```mermaid
+flowchart LR
+    A["1. Question Lab<br/>/studio"] --> B["2. The game<br/>/play"]
+    B --> C["3. Response intelligence<br/>/admin/protein"]
+    C --> D["4. Brand HQ<br/>/insights/protein"]
+    C -. "team reviews and question health<br/>improve the next study" .-> A
+```
+
+1. **Question Lab: the AI research engine** (`/studio`). Paste a normal survey question. The engine works out what the brand needs to decide, checks the question for bias (here: social desirability and the ceiling effect), picks a format that can really measure it, and rewrites it as a behavioural question. One AI model writes and a different model reviews, so it never checks its own work. You can play the game it designs right there.
+2. **The game** (`/play`). Players make real trade-offs in short snack games, about 3 minutes in total. The choice rounds adapt to each player: the next question is the one we learn the most from, and the game stops once it knows enough (4 to 10 rounds). The original 1–5 question is asked last, so we can compare what people say with what they do. Open `/play?researcher=1` to see the live quality score.
+3. **Response intelligence** (`/admin/protein`). Every tap and timing is scored on the server. Careless signs (rushing, tapping the same spot, flipping on a repeat question, picking an overpriced twin) lower a session's quality score and how much it counts. Contradictions are never penalties; they become findings. Suspicious patterns across sessions (shared devices, identical answers, sudden bursts) are flagged with a reason, and a person makes the final call.
+4. **Brand HQ** (`/insights/protein`). What the brand gets: how much people will pay for protein in each moment, a what-if simulator for a new product idea, the gap between what people say and what they do, and AI recommendations that cite their evidence.
+
+| Page | What it is |
 |---|---|
-| `/play` | The participant game: 10 short games. Each player plays 7 (5 core + 2 bonus games picked for them) in 8 steps, about 3 minutes, mobile-first. Open `/play?researcher=1` for a "researcher view" that shows the live quality score. |
+| `/studio` | The Question Lab: decision → bias check → format match → rewrite → independent critic → game preview. |
+| `/play` | The participant game: 10 short games. Each player plays 7 (5 core + 2 bonus games picked for them) in 8 steps, mobile-first. |
 | `/admin/protein` | Response intelligence: 14 dashboard sections covering every behavioural parameter, plus a drill-down for each session. |
-| `/insights/protein` | The brand view (Macros): willingness to pay by moment and segment, a what-if demand simulator, and AI recommendations that cite their evidence. |
-| `/studio` | The AI question studio: brief → hypotheses → generate → independent critic → rewrite → format match → re-critique. |
+| `/insights/protein` | Brand HQ: willingness to pay by moment and segment, a what-if demand simulator, and AI recommendations that cite their evidence. |
 
 ---
 
