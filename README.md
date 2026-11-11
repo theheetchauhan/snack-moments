@@ -2,6 +2,10 @@
 
 **An adaptive, behaviour-first research game with a response-intelligence engine.**
 
+[![Watch the 4-minute walkthrough](.github/walkthrough-thumbnail.jpg)](https://github.com/theheetchauhan/snack-moments/releases/download/walkthrough-video/snack-moments-walkthrough.mp4)
+
+**▶ [Watch the walkthrough video (4:35)](https://github.com/theheetchauhan/snack-moments/releases/download/walkthrough-video/snack-moments-walkthrough.mp4)**: a guided tour of the whole product, in the order it works. It starts with the problem (why "how important is protein to you, 1 to 5?" tells a brand nothing), then shows the Question Lab turning that question into a behavioural game, a player going through the game with the live quality score, the research team's dashboard, Brand HQ, and finally the feedback loop that makes each study smarter than the last.
+
 **Live demo:** https://snack-moments.vercel.app (start at [/play](https://snack-moments.vercel.app/play), then [/admin/protein](https://snack-moments.vercel.app/admin/protein))
 
 ## The problem
@@ -139,8 +143,6 @@ This is planned missingness with judgment. Each player plays 2 of the 5 bonus ga
 ---
 
 ## Architecture
-
-Open `docs/architecture.excalidraw` and `docs/part-b-framework.excalidraw` at [excalidraw.com](https://excalidraw.com) (File → Open).
 
 ```
 app/            play · admin/[studyId] (+ session drill-down) · insights/[studyId] · studio · api/*

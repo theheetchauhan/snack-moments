@@ -44,3 +44,6 @@ next-env.d.ts
 # local embedded database
 .data/
 /.next-build/
+
+# design docs and diagrams are kept locally, not in the repo
+/docs/
