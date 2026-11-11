@@ -1,6 +1,9 @@
 # Snack Moments 🍿
 
 **An adaptive, behaviour-first research game with a response-intelligence engine.**
+
+**Live demo:** https://snack-moments.vercel.app (start at [/play](https://snack-moments.vercel.app/play), then [/admin/protein](https://snack-moments.vercel.app/admin/protein))
+
 This is a prototype for the Hot Takes *Product & AI Engineering* assignment (Challenge 1, Parts A and B). It uses protein snacks as the example category.
 
 The conventional question:
