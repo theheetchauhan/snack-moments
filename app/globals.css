@@ -1,26 +1,234 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fbf7f0;
+  --surface: #ffffff;
+  --ink: #1f2421;
+  --muted: #6b6f69;
+  --line: #e8e1d5;
+  --accent: #f26b3a;
+  --accent-ink: #ffffff;
+  --leaf: #2f7d5b;
+  --butter: #f5c84b;
+  --berry: #b8325a;
+  --sky: #3b6ea8;
+  --green: #2f9e62;
+  --amber: #e0a020;
+  --red: #d64545;
+}
+
+/* Admin / insights views use a calmer, denser palette */
+.theme-admin {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #15181d;
+  --muted: #667085;
+  --line: #e4e7ec;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-leaf: var(--leaf);
+  --color-butter: var(--butter);
+  --color-berry: var(--berry);
+  --color-sky: var(--sky);
+  --color-good: var(--green);
+  --color-warn: var(--amber);
+  --color-bad: var(--red);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 14px;
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  transition: transform 0.08s ease, opacity 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--ink);
+  color: #fff;
+}
+.btn-accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+.btn:disabled {
+  opacity: 0.4;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+/* ---------- home: game title screen ---------- */
+.sm-sunburst {
+  /* rays of uneven width that fade out before any edge, so no hard cut line shows */
+  background: conic-gradient(
+    from 0deg,
+    rgba(245, 200, 75, 0.2) 0.0deg 8.2deg,
+    transparent 8.2deg 22.3deg,
+    rgba(245, 200, 75, 0.2) 22.3deg 27.0deg,
+    transparent 27.0deg 37.5deg,
+    rgba(245, 200, 75, 0.2) 37.5deg 53.9deg,
+    transparent 53.9deg 61.0deg,
+    rgba(245, 200, 75, 0.2) 61.0deg 72.7deg,
+    transparent 72.7deg 78.6deg,
+    rgba(245, 200, 75, 0.2) 78.6deg 93.8deg,
+    transparent 93.8deg 103.2deg,
+    rgba(245, 200, 75, 0.2) 103.2deg 106.7deg,
+    transparent 106.7deg 119.6deg,
+    rgba(245, 200, 75, 0.2) 119.6deg 126.6deg,
+    transparent 126.6deg 144.2deg,
+    rgba(245, 200, 75, 0.2) 144.2deg 154.8deg,
+    transparent 154.8deg 159.5deg,
+    rgba(245, 200, 75, 0.2) 159.5deg 173.6deg,
+    transparent 173.6deg 181.8deg,
+    rgba(245, 200, 75, 0.2) 181.8deg 187.6deg,
+    transparent 187.6deg 199.3deg,
+    rgba(245, 200, 75, 0.2) 199.3deg 208.7deg,
+    transparent 208.7deg 224.0deg,
+    rgba(245, 200, 75, 0.2) 224.0deg 231.0deg,
+    transparent 231.0deg 241.6deg,
+    rgba(245, 200, 75, 0.2) 241.6deg 254.5deg,
+    transparent 254.5deg 259.2deg,
+    rgba(245, 200, 75, 0.2) 259.2deg 275.6deg,
+    transparent 275.6deg 283.8deg,
+    rgba(245, 200, 75, 0.2) 283.8deg 295.5deg,
+    transparent 295.5deg 301.4deg,
+    rgba(245, 200, 75, 0.2) 301.4deg 311.9deg,
+    transparent 311.9deg 319.0deg,
+    rgba(245, 200, 75, 0.2) 319.0deg 333.0deg,
+    transparent 333.0deg 342.4deg,
+    rgba(245, 200, 75, 0.2) 342.4deg 347.1deg,
+    transparent 347.1deg 360.0deg
+  );
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 16%, transparent 38%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 16%, transparent 38%);
+  animation: sm-spin 60s linear infinite;
+}
+.sm-logo span {
+  /* outline from offset shadows (text-stroke draws artefacts on variable-font overlaps) */
+  text-shadow:
+    2px 2px 0 #120a20,
+    -2px 2px 0 #120a20,
+    2px -2px 0 #120a20,
+    -2px -2px 0 #120a20,
+    0 6px 0 var(--berry),
+    0 10px 0 #120a20,
+    0 18px 30px rgba(0, 0, 0, 0.45);
+}
+.sm-logo span:first-child {
+  transform: rotate(-3deg);
+}
+.sm-float {
+  animation: sm-float 5s ease-in-out infinite;
+}
+.sm-play {
+  animation: sm-breathe 2.4s ease-in-out infinite;
+}
+.sm-pop {
+  animation: sm-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.sm-card {
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.15s ease;
+}
+.sm-card:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.04);
+}
+@keyframes sm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sm-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+}
+@keyframes sm-breathe {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.05;
+  }
+}
+@keyframes sm-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sm-sunburst,
+  .sm-float,
+  .sm-play,
+  .sm-pop {
+    animation: none;
+  }
+}
+
+/* ---------- home: trading-card deck ---------- */
+.sm-title {
+  text-shadow:
+    0 3px 0 var(--berry),
+    0 6px 0 #120a20;
+}
+.sm-cardname {
+  text-shadow:
+    1.5px 1.5px 0 #120a20,
+    -1.5px 1.5px 0 #120a20,
+    1.5px -1.5px 0 #120a20,
+    -1.5px -1.5px 0 #120a20,
+    0 3px 0 #120a20;
+}
+.sm-art {
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.4) 1.2px, transparent 1.3px) 0 0 / 9px 9px,
+    radial-gradient(circle at 50% 40%, #fff8 0, transparent 65%),
+    color-mix(in oklab, var(--card) 18%, #fffaf2);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.08);
+}
+.sm-card:hover .sm-art span:first-child {
+  transform: scale(1.15) rotate(-6deg);
 }

@@ -6,22 +6,40 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "simulate": "tsx scripts/simulate.ts",
+    "model:recovery": "tsx scripts/model-recovery.ts",
+    "playthrough": "node scripts/api-playthrough.mjs"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.5.15",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "ai": "^7.0.164",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.45.4",
+    "framer-motion": "^14.10.1",
+    "nanoid": "^6.0.2",
+    "next": "15.5.29",
+    "postgres": "^4.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.29"
+    "recharts": "^3.10.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^24.19.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "15.5.29",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
   }
 }
